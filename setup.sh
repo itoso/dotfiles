@@ -1,19 +1,22 @@
 #!/bin/bash
 
 DOT_FILES=(
- .vimrc
- .gvimrc
- .bashrc
- .bash_profile
+.vimrc
+.gvimrc
+.bashrc
+.bash_profile
 )
 
 for file in ${DOT_FILES[@]}
 do
-  if [ -a $HOME/$file ]; then
-    ln -s $HOME/dotfiles/$file $HOME/$file.dot
-    echo "$file exists. Creating ${file}.dot"
-  else
-    ln -s $HOME/dotfiles/$file $HOME/$file
-    echo "シンボリックリンクを貼りました: $file"
-  fi
+    echo "[${file}]"
+    # 通常ファイルが存在する場合はorigをつけて退避
+    if [ -f $HOME/$file -a ! -L $HOME/$file ]; then
+        mv $HOME/$file $HOME/$file.orig
+        echo "$file exists. Moved to ${file}.orig"
+    fi
+
+    # 
+    ln -siv $HOME/dotfiles/$file $HOME/$file
+    echo "Symbolic link created for $file"
 done

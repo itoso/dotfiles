@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/bash -ex
+
+DOT_FILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd)"
+echo "dotfiles directory: ${DOT_FILES_DIR}"
 
 DOT_FILES=(
 .vimrc
@@ -17,6 +20,6 @@ do
     fi
 
     # 
-    ln -siv $HOME/dotfiles/$file $HOME/$file
+    ln -siv ${DOT_FILES_DIR}/$file $HOME/$file
     echo "Symbolic link created for $file"
 done

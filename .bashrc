@@ -11,6 +11,7 @@ alias ll='ls -Gl'
 alias lla='ls -Gla'
 
 alias vim='nvim'
+alias vi='nvim'
 
 
 # Init anyenv

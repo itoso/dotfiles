@@ -43,6 +43,7 @@ echo "[INSTALLER] Set up Node js" & {
 echo "[INSTALLER] Installing NeoVim and Gtags" & {
     brew install nvim
     pip3 install neovim
+    brew install ctags
 }
 
 echo "[INSTALLER] Installing AWS tools" & {

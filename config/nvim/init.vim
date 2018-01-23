@@ -46,7 +46,7 @@ syntax enable
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
-let mapleader = ","              " キーマップリーダー
+
 set scrolloff=5                  " スクロール時の余白確保
 set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
 set nobackup                     " バックアップ取らない
@@ -68,7 +68,6 @@ set modelines=0                  " モードラインは無効
 set clipboard+=unnamed
 
 " Ev/Rvでvimrcの編集と反映
-
 command! Ev edit $MYVIMRC
 command! Sv source $MYVIMRC
 command! Eg edit $MYGVIMRC
@@ -76,8 +75,6 @@ command! Sg source $MYGVIMRC
 
 " ファイルタイプ判定をon
 filetype plugin on
-
-
 
 
 
@@ -97,6 +94,7 @@ match ZenkakuSpace /　/
 
 " カーソル行をハイライト
 set cursorline
+
 " カレントウィンドウにのみ罫線を引く
 augroup cch
   autocmd! cch
@@ -109,17 +107,18 @@ highlight CursorLine ctermbg=black guibg=black
 
 " コマンド実行中は再描画しない
 set lazyredraw
+
 " 高速ターミナル接続を行う
 set ttyfast
 
-" Deniteの表示
-hi CursorLine guifg=#E19972
+
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
 "-------------------------------------------------------------------------------
 set ffs=unix,dos,mac  " 改行文字
 set encoding=utf-8    " デフォルトエンコーディング
+
 
 
 "-------------------------------------------------------------------------------
@@ -132,6 +131,7 @@ set incsearch  " インクリメンタルサーチ
 set hlsearch   " 検索文字をハイライト
 "Escの2回押しでハイライト消去
 nmap <silent> <ESC><ESC> :nohlsearch<CR>
+
 
 
 "-------------------------------------------------------------------------------
@@ -149,11 +149,26 @@ set ruler
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent   " 自動でインデント
-"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
 set shiftround   " '<'や'>'でインデントする際に'shiftwidth'の倍数に丸める
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set tabstop=4 shiftwidth=4 softtabstop=0 expandtab
+
+
+"-------------------------------------------------------------------------------
+" キーマッピング
+"-------------------------------------------------------------------------------
+
+" denite
+nnoremap [Denite] <nop>
+nmap <space>d [Denite]
+
+nnoremap [Denite]f :<C-u>Denite file<CR>
+nnoremap [Denite]b :<C-u>Denite buffer<CR>
+nnoremap [Denite]l :<C-u>Denite line<CR>
+nnoremap [Denite]g :<C-u>Denite grep<CR>
+nnoremap [Denite]r :<C-u>Denite file_mru<CR>
+nnoremap [Denite]<C-r> :<C-u>Denite register<CR>
 

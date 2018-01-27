@@ -3,6 +3,10 @@ if &compatible
   set nocompatible
 endif
 
+
+"-------------------------------------------------------------------------------
+" Dein用設定
+"-------------------------------------------------------------------------------
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -23,10 +27,14 @@ if dein#load_state('/Users/so.ito/.vim/bundles')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/denite.nvim')
-  call dein#add('vim-airline/vim-airline')
+  call dein#add('itchyny/lightline.vim')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('tpope/vim-fugitive')
   call dein#add('w0rp/ale')
+  call dein#add('ryanoasis/vim-devicons')
+
 
   " TO install : ":call dein#install()"
 
@@ -87,6 +95,7 @@ set number            " 行番号表示
 set list              " 不可視文字表示
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲" 不可視文字の表示形式
 set display=uhex      " 印字不可能文字を16進数で表示
+set ambiwidth=double
 
 " 全角スペースの表示
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -111,7 +120,7 @@ set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
 
-
+set t_Co=256 " この設定がないと色が正しく表示されない
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
